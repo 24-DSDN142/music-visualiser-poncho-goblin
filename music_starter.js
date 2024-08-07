@@ -5,7 +5,17 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
+
+// fill(230, 230, 50)
   
+// ellipse (200, 200, 200, 200)
+// ellipse (500, 200, 200, 200)
+// let mouthSize = map(vocal, 0, 100, 25, 150)
+
+// rect (350, 500, 200, mouthSize)
+
+
+
    let bar_spacing = height / 10;
    let bar_height = width / 12;
    let bar_pos_x = width / 2;
@@ -41,3 +51,5 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    textSize(vocal);
    text(words, width/2, height/3);
 }
+
+
