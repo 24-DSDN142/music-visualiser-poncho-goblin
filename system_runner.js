@@ -16,6 +16,13 @@ let songEpoch = 0;              // millis when song starts
 let table;
 let words;
 
+
+let bigFmg;
+
+function preload() {
+  bigFmg = loadImage('/assets/BGImg.jpeg');
+}
+
 function songLoadedError() {
   songButton.elt.innerHTML = "Song: Load Error";
   print(songButton.elt.innerHTML);
