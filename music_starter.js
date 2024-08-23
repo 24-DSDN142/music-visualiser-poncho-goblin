@@ -26,7 +26,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
   }
 
   display() {
-    stroke(200, 0, 0); // Set stroke color
+    stroke(200, 0, 0); // Set stroke color // make me bleeeeeed!
     strokeWeight(2); // How thick is the rain
     line(this.x, this.y, this.x, this.y + this.length); // Draw the rain
   }
@@ -35,6 +35,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
     function draw_one_frame(words, vocal, drum, bass, other, counter) {
       const numRaindrops = map(vocal, 0, 100, 0, 500); // Number of raindrops
     
+
       if (firstRun) {
         BGimg = loadImage('BGImg1.png');
         firstRun = false;
@@ -56,8 +57,9 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
       // Draw waves based on audio data
       for (let i = 0; i < 1000; i++) {
         rect(i * 10, drum * sin(i * 5) + 550, 5);
-        rect(i * 10, vocal * sin(i * 10) + 475, 5);
-        rect(i * 10, bass * sin(i * 15) + 425, 5);
+        rect(i * 10, bass * sin(i * 10) + 475, 5);
+        rect(i * 10, vocal * sin(i * 15) + 425, 5);
+        
       }
     
       // Display text based on words
@@ -73,10 +75,8 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
         // textAlign(CENTER);
         // textSize(vocal);
         // text(words, width / 2, height / 3);
-
-
       }
-    
+
       // Update and draw raindrops
       raindrops = raindrops.filter(drop => drop.y <= height); // Remove out-of-bounds raindrops
       while (raindrops.length < numRaindrops) {
