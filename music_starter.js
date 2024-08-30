@@ -3,7 +3,7 @@ let firstRun = true;
 let FontImg;
 let raindrops = []; // Array to hold raindrop objects
 
-var xCoord1 = 0;
+var xCoord1 = 0; // These cords are used for lightning code
 var yCoord1 = 0;
 var xCoord2 = 0;
 var yCoord2 = 0;
@@ -37,7 +37,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
     }
   }
 
-  display() {
+  display() { // Could play with colour by storing it as a variable, once i figure out how lol, i think
     let v=0
     while(v<255, v++){
       if(v >=255){
@@ -67,9 +67,9 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
     
       // Draw static elements
       noStroke();
-      fill(255);
+      fill(255); // Moon
       ellipse(640, 120, 155, 155);
-      fill(20);
+      fill(20); // Moon Shadow
       ellipse(625, 120, 145, 155);
       fill(230);
     
