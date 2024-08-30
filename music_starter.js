@@ -115,20 +115,18 @@ color(255)
 stroke(75,200,215)
       // lightning
       for (var i = 0; i < 25; i++) {
-        xCoord1 = xCoord2;
+        xCoord1 = xCoord2; // starts at 0, after code loops, the new point is set to the old point of cord 2, and then is replaced and it repeats. So the first cord will always be under where the previous was drawn
         yCoord1 = yCoord2;
-        xCoord2 = xCoord1 + int(random(-20, 35));
-        yCoord2 = yCoord1 + int(random(-10, 75));
+        xCoord2 = xCoord1 + int(random(-50, 105)); // Plots one point, a random distance away from the previous, trending right. 
+        yCoord2 = yCoord1 + int(random(-50, 150)); // Plots one point, a random distance away from the previous, trending down. 
         strokeWeight(random(5, 10));
         strokeJoin(MITER);
         line(xCoord1, yCoord1, xCoord2, yCoord2);
-    
+
         if ((xCoord2 > width) | (xCoord2 < 0) | (yCoord2 > height) | (yCoord2 < 0)) {
-          // clear();
-          // drawBackground();
           xCoord2 = int(random(0, width));
           yCoord2 = 0;
-          // stroke(255, 255, random(0, 255));
+          
         }
       }
 
