@@ -2,6 +2,10 @@ let BGimg;
 let firstRun = true;
 let FontImg;
 let raindrops = []; // Array to hold raindrop objects
+// let redRain=color(200, 0, 0)
+// let whiteRain=color(200,200,200)
+// let rainChangeColor=lerpColor(redRain,whiteRain,counter)
+
 
 var xCoord1 = 0; // These cords are used for lightning code
 var yCoord1 = 0;
@@ -9,7 +13,7 @@ var xCoord2 = 0;
 var yCoord2 = 0;
 
 function setup() {
- createCanvas(2000, 2000);
+ createCanvas(1280, 720);
    drawBackground();
    xCoord2 = 0;
    yCoord2 = height / 2;
@@ -20,7 +24,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
   constructor(vocal, bass, other) {
     this.x = random(width); // randomizes X Pos
     this.y = random(-100, -10); // Starts off screen 
-    this.speed = map(vocal, 0, 100, 1, 25); // rain speeds up as vocals intensify
+    this.speed = map(vocal, 100, 0, 1, 25); // rain speeds up as vocals intensify
     this.length = map(bass, 0, 100, 0, 25); // random drop length
     this.color = color(20); // Same as background
     this.vocal = vocal; // Stores values, vocal
@@ -38,14 +42,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
   }
 
   display() { // Could play with colour by storing it as a variable, once i figure out how lol, i think
-    let v=0
-    while(v<255, v++){
-      if(v >=255){
-        v=0
-      }
-    }
-    console.log(v)
-    stroke(200+v, v, v); // Set stroke color
+    stroke(200, 0, 0); // Set stroke color
     // stroke(200, 0, 0); // Set stroke color
     strokeWeight(2); // How thick is the rain
     line(this.x, this.y, this.x, this.y + this.length); // Draw the rain
@@ -53,7 +50,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
 }
 
     function draw_one_frame(words, vocal, drum, bass, other, counter) {
-      const numRaindrops = map(vocal, 0, 100, 0, 500); // Number of raindrops
+      const numRaindrops = map(vocal, 100, 0, 0, 500); // Number of raindrops
     
       if (firstRun) {
         BGimg = loadImage('BGImg1.png');
@@ -62,7 +59,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
     
       // Clear the canvas and draw the background image
       background(20);
-      imageMode (CORNER);
+      imageMode(CORNER);
       image(BGimg, 0, 0);
     
       // Draw static elements
