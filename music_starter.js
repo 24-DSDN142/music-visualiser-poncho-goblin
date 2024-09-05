@@ -2,9 +2,8 @@ let BGimg;
 let firstRun = true;
 let FontImg;
 let raindrops = []; // Array to hold raindrop objects
-// let redRain=color(200, 0, 0)
-// let whiteRain=color(200,200,200)
-// let rainChangeColor=lerpColor(redRain,whiteRain,counter)
+
+
 
 
 var xCoord1 = 0; // These cords are used for lightning code
@@ -18,10 +17,10 @@ function setup() {
    xCoord2 = 0;
    yCoord2 = height / 2;
 }
-
+// 12034
 // Define Raindrop class
 class Raindrop { // Credits to ChatGPT for helping me get this to work 
-  constructor(vocal, bass, other) {
+  constructor(vocal, bass, other,counter) {
     this.x = random(width); // randomizes X Pos
     this.y = random(-100, -10); // Starts off screen 
     this.speed = map(vocal, 100, 0, 1, 25); // rain speeds up as vocals intensify
@@ -41,8 +40,10 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
     }
   }
 
-  display() { // Could play with colour by storing it as a variable, once i figure out how lol, i think
-    stroke(200, 0, 0); // Set stroke color
+  display(counter) { // Could play with colour by storing it as a variable, once i figure out how lol, i think
+    // let cNum = map(counter, 0, 12034, 200, 0)
+    let cNum = 0
+    stroke(200,cNum,cNum); // Set stroke color
     // stroke(200, 0, 0); // Set stroke color
     strokeWeight(2); // How thick is the rain
     line(this.x, this.y, this.x, this.y + this.length); // Draw the rain
@@ -51,7 +52,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
 
     function draw_one_frame(words, vocal, drum, bass, other, counter) {
       const numRaindrops = map(vocal, 100, 0, 0, 500); // Number of raindrops
-    
+      console.log(counter)
       if (firstRun) {
         BGimg = loadImage('BGImg1.png');
         firstRun = false;
@@ -106,9 +107,11 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
         drop.update();
         drop.display();
       }
+      
 
 if (drum > 83) {
-color(255)
+//color(255)
+push()
 stroke(75,200,215)
       // lightning
       for (var i = 0; i < 25; i++) {
@@ -129,7 +132,7 @@ stroke(75,200,215)
 
 
     }
-
+pop()
       // lightning
     function drawBackground() {
       for (var i = 0; i < 500; i++) {
