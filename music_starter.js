@@ -20,7 +20,7 @@ function setup() {
 // 12034
 // Define Raindrop class
 class Raindrop { // Credits to ChatGPT for helping me get this to work 
-  constructor(vocal, bass, other,counter) {
+  constructor(vocal, bass, other, counter) {
     this.x = random(width); // randomizes X Pos
     this.y = random(-100, -10); // Starts off screen 
     this.speed = map(vocal, 100, 0, 1, 25); // rain speeds up as vocals intensify
@@ -48,6 +48,9 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
     strokeWeight(2); // How thick is the rain
     line(this.x, this.y, this.x, this.y + this.length); // Draw the rain
   }
+}
+
+function drawcloud(){ // reducing to a variable allows it to be different in each instance.
 }
 
     function draw_one_frame(words, vocal, drum, bass, other, counter) {
@@ -108,10 +111,11 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
         drop.display();
       }
       
+    
 
 if (drum > 83) {
 //color(255)
-push()
+
 stroke(75,200,215)
       // lightning
       for (var i = 0; i < 25; i++) {
@@ -129,10 +133,8 @@ stroke(75,200,215)
           
         }
       }
-
-
     }
-pop()
+
       // lightning
     function drawBackground() {
       for (var i = 0; i < 500; i++) {
