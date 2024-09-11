@@ -54,31 +54,24 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
         BGimg = loadImage('BGImg1.png');
         firstRun = false;
       }
-    
-      if (counter > 2000) { // Gradually shifts the color
-        RCOR = 200
+
+      if (counter > 2000 &&counter < 3999) { // Gradually shifts the color
         RCOG = 160
         RCOB = 160
       }
-      else if (counter > 4000) { // Gradually shifts the color
-
-        RCOR = 200
+      else if (counter > 4000 &&counter < 5999 ) { // Gradually shifts the color
         RCOG = 120
         RCOB = 120
-
       }
-      else if (counter > 6000) { // Gradually shifts the color
-        RCOR = 200
+      else if (counter > 6000 &&counter < 7999) { // Gradually shifts the color
         RCOG = 80
         RCOB = 80
       }
-      else if (counter > 8000) { // Gradually shifts the color
-        RCOR = 200
+      else if (counter > 8000 &&counter < 9999) { // Gradually shifts the color
         RCOG = 40
         RCOB = 40
       }
-      else if (counter > 10000) { // Gradually shifts the color
-        RCOR = 200
+      else if (counter > 10000)  { // Gradually shifts the color
         RCOG = 0
         RCOB = 0
       }
