@@ -2,6 +2,10 @@ let BGimg;
 let firstRun = true;
 let FontImg;
 let raindrops = []; // Array to hold raindrop objects
+let FirstRun = true
+let RCOR = 200  
+let RCOG = 200
+let RCOB = 200
 
 
 
@@ -40,18 +44,20 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
     }
   }
 
-  display(counter) { // Could play with colour by storing it as a variable, once i figure out how lol, i think
+  display() { // Could play with colour by storing it as a variable, once i figure out how lol, i think
     // let cNum = map(counter, 0, 12034, 200, 0)
-    let cNum = 0
-    stroke(200,cNum,cNum); // Set stroke color
-    // stroke(200, 0, 0); // Set stroke color
-    strokeWeight(2); // How thick is the rain
+  //  if (FirstRun = true) {
+  //   let RainColor = color(200, 200, 200)
+  //   FirstRun = false
+  //  }
+    strokeWeight(2)
+    stroke(RCOR, RCOG, RCOB); // Set stroke color
+   // strokeWeight(StrokeWeight); // How thick is the rain
     line(this.x, this.y, this.x, this.y + this.length); // Draw the rain
   }
 }
 
-function drawcloud(){ // reducing to a variable allows it to be different in each instance.
-}
+
 
     function draw_one_frame(words, vocal, drum, bass, other, counter) {
       const numRaindrops = map(vocal, 100, 0, 0, 500); // Number of raindrops
@@ -61,6 +67,40 @@ function drawcloud(){ // reducing to a variable allows it to be different in eac
         firstRun = false;
       }
     
+      if (counter > 2000) {
+        RCOR = 200
+        RCOG = 160
+        RCOB = 160
+      }
+      else if (counter > 4000) {
+
+        RCOR = 200
+        RCOG = 120
+        RCOB = 120
+
+      }
+      else if (counter > 6000) {
+        RCOR = 200
+        RCOG = 80
+        RCOB = 80
+      }
+      else if (counter > 8000) {
+        RCOR = 200
+        RCOG = 40
+        RCOB = 40
+      }
+      else if (counter > 10000) {
+        RCOR = 200
+        RCOG = 0
+        RCOB = 0
+      }
+    
+
+
+      // else if (counter > 4000) {
+      //   RainColor = color (200, 140, 140)
+      // }
+
       // Clear the canvas and draw the background image
       background(20);
       imageMode(CORNER);
@@ -115,6 +155,7 @@ function drawcloud(){ // reducing to a variable allows it to be different in eac
 
 if (drum > 83) {
 //color(255)
+
 
 stroke(75,200,215)
       // lightning
