@@ -1,5 +1,5 @@
-const canvasWidth = 540;
-const canvasHeight = 960;
+const canvasWidth = 1280;
+const canvasHeight = 720;
 
 
 let mainCanvas;
@@ -15,6 +15,8 @@ let songIsPlaying = false;
 let songEpoch = 0;              // millis when song starts
 let table;
 let words;
+let numRaindrops;
+
 
 function songLoadedError() {
   songButton.elt.innerHTML = "Song: Load Error";
@@ -43,6 +45,8 @@ function songLoadedSoFar(soFar) {
 function preload() {
   table = loadTable('volumes.csv', 'csv');
   words = loadStrings('words.txt');
+  FontImg = loadImage('RowPNG2.png');
+  BGImg = loadImage('BGImg1.png');
 }
 
 let volumes = [];
