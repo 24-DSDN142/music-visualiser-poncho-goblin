@@ -1,17 +1,14 @@
-let BGimg;
-let firstRun = true;
-let FontImg;
+let BGimg; // for uploading the background
+let firstRun = true; // BGImg logic
+let FontImg; // ROW text
 let raindrops = []; // Array to hold raindrop objects
-let FirstRun = true
-let RCOR = 200  
-let RCOG = 200
-let RCOB = 200
-
-
+let RCOR = 200  // RAIN R
+let RCOG = 200  // RAIN G
+let RCOB = 200  // RAIN B
 
 
 var xCoord1 = 0; // These cords are used for lightning code
-var yCoord1 = 0;
+var yCoord1 = 0; 
 var xCoord2 = 0;
 var yCoord2 = 0;
 
@@ -24,7 +21,7 @@ function setup() {
 // 12034
 // Define Raindrop class
 class Raindrop { // Credits to ChatGPT for helping me get this to work 
-  constructor(vocal, bass, other, counter) {
+  constructor(vocal, bass, other) { // Store stuff here to use below
     this.x = random(width); // randomizes X Pos
     this.y = random(-100, -10); // Starts off screen 
     this.speed = map(vocal, 100, 0, 1, 25); // rain speeds up as vocals intensify
@@ -45,20 +42,11 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
   }
 
   display() { // Could play with colour by storing it as a variable, once i figure out how lol, i think
-    // let cNum = map(counter, 0, 12034, 200, 0)
-  //  if (FirstRun = true) {
-  //   let RainColor = color(200, 200, 200)
-  //   FirstRun = false
-  //  }
     strokeWeight(2)
     stroke(RCOR, RCOG, RCOB); // Set stroke color
-   // strokeWeight(StrokeWeight); // How thick is the rain
     line(this.x, this.y, this.x, this.y + this.length); // Draw the rain
   }
 }
-
-
-
     function draw_one_frame(words, vocal, drum, bass, other, counter) {
       const numRaindrops = map(vocal, 100, 0, 0, 500); // Number of raindrops
       console.log(counter)
@@ -67,46 +55,40 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
         firstRun = false;
       }
     
-      if (counter > 2000) {
+      if (counter > 2000) { // Gradually shifts the color
         RCOR = 200
         RCOG = 160
         RCOB = 160
       }
-      else if (counter > 4000) {
+      else if (counter > 4000) { // Gradually shifts the color
 
         RCOR = 200
         RCOG = 120
         RCOB = 120
 
       }
-      else if (counter > 6000) {
+      else if (counter > 6000) { // Gradually shifts the color
         RCOR = 200
         RCOG = 80
         RCOB = 80
       }
-      else if (counter > 8000) {
+      else if (counter > 8000) { // Gradually shifts the color
         RCOR = 200
         RCOG = 40
         RCOB = 40
       }
-      else if (counter > 10000) {
+      else if (counter > 10000) { // Gradually shifts the color
         RCOR = 200
         RCOG = 0
         RCOB = 0
       }
-    
-
-
-      // else if (counter > 4000) {
-      //   RainColor = color (200, 140, 140)
-      // }
-
+  
       // Clear the canvas and draw the background image
       background(20);
       imageMode(CORNER);
       image(BGimg, 0, 0);
     
-      // Draw static elements
+      // Draw static elements // The waning moon
       noStroke();
       fill(255); // Moon
       ellipse(640, 120, 155, 155);
@@ -116,25 +98,19 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
     
       // Draw waves based on audio data
       for (let i = 0; i < 1000; i++) {
-        rect(i * 10, drum * sin(i * 5) + 550, 5);
+        rect(i * 10, other * sin(i * 5) + 550, 5);
         rect(i * 10, vocal * sin(i * 10) + 475, 5);
         rect(i * 10, bass * sin(i * 15) + 425, 5);
       }
     
       // Display text based on words
-      if (words === 'ROW') {
+      if (words === 'ROW') { // Nightmare fuel. 
         imageMode(CENTER);
         // Scale me
-        let imgScale = map(vocal, 0, 100, 0.25, 0.85)
+        let imgScale = map(vocal, 0, 100, 0.25, 0.85) // The is larger when the the vocals are loud
         let imgWidth = FontImg.width * imgScale;
         let imgHeight = FontImg.height * imgScale;
         image(FontImg, 640, 300, imgWidth, imgHeight)
-
-        // fill(255, 255, 0); // Display words
-        // textAlign(CENTER);
-        // textSize(vocal);
-        // text(words, width / 2, height / 3);
-
 
       }
     
@@ -151,11 +127,7 @@ class Raindrop { // Credits to ChatGPT for helping me get this to work
         drop.display();
       }
       
-    
-
 if (drum > 83) {
-//color(255)
-
 
 stroke(75,200,215)
       // lightning
@@ -186,42 +158,3 @@ stroke(75,200,215)
 
     }
  
-  //  // vocal bar is red
-  //  fill(200, 0, 0);
-  //  rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-  //  fill(0);
-  //  text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-  //  // drum bar is green
-  //  fill(0, 200, 0);
-  //  rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-  //  fill(0);
-  //  text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-   // bass bar is blue
-  //  fill(50, 50, 240);
-  //  rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-  //  fill(0);
-  //  text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-  //  // other bar is white
-  //  fill(200, 200, 200);
-  //  rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-  //  fill(0);
-  //  text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-
-  
-// fill(230, 230, 50)
-  
-// ellipse (200, 200, 200, 200)
-// ellipse (500, 200, 200, 200)
-// let mouthSize = map(vocal, 0, 100, 25, 150)
-
-// rect (350, 500, 200, mouthSize)
-
-
-// push()
-// fill(255)
-// stroke(0)
-// rect (0, 160, 2570, 360)
-// pop()
